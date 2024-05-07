@@ -13,6 +13,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
 
 
 @Service
@@ -47,5 +48,19 @@ public class JWTService {
                 .parser()
                 .setSigningKey(key)
                 .build().parseSignedClaims(token).getPayload();
+    }
+
+    private <T> T extractClaim(String token, Function<Claims, T> claimsResolverFn) {
+        Claims claim = extractPayload(token);
+        return claimsResolverFn.apply(claim);
+    }
+
+    public String getEmail(String token) {
+        return extractClaim(token, Claims::getSubject);
+    }
+
+    public Boolean validateToken(String token, String email) {
+        final String userEmailFetchedFromToken = getEmail(token);
+        return (userEmailFetchedFromToken.equals(email));
     }
 }

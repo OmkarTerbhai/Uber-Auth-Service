@@ -1,6 +1,8 @@
 package com.uber.auth.configurations;
 
+//import com.uber.auth.filters.AuthFilter;
 import com.uber.auth.services.DriverDetailsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.autoconfigure.observation.ObservationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,10 +17,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
+//    @Autowired
+//    private AuthFilter authFilter;
 
 
     @Bean
@@ -26,10 +32,10 @@ public class SecurityConfig {
 
         return httpSecurity.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers("/api/v1/signup/**").permitAll();
-                    auth.requestMatchers("/api/v1/signin/**").permitAll();
-                    auth.requestMatchers("/api/v1/validate/**").permitAll();
-                            auth.anyRequest().authenticated();
+                            auth.requestMatchers("/api/v1/signup/**").permitAll();
+                            auth.requestMatchers("/api/v1/signin/**").permitAll();
+                            auth.requestMatchers("/api/v1/validate").permitAll();
+                            auth.anyRequest().permitAll();
                         }
                 )
                 .build();

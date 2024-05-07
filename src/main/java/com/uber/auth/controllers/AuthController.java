@@ -6,6 +6,7 @@ import com.uber.auth.entities.Driver;
 import com.uber.auth.services.AuthService;
 import com.uber.auth.services.JWTService;
 import jakarta.annotation.security.PermitAll;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -46,6 +47,7 @@ public class AuthController {
     }
 
     @PostMapping("/signin")
+    @PermitAll
     public ResponseEntity<?> signin(@RequestBody SignInDTO signInDTO, HttpServletResponse response) {
 
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(signInDTO.getEmail(), signInDTO.getPassword()));
@@ -68,7 +70,7 @@ public class AuthController {
 
     @GetMapping("/validate")
     public ResponseEntity<?> validate(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println(request.getCookies()[0]);
+
 
         return new ResponseEntity<>("Undefeated, Undisputed", HttpStatus.OK);
     }

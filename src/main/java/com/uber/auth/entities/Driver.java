@@ -4,6 +4,7 @@ import com.uber.auth.entities.Review;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
+import com.uber.common.*;
 import lombok.*;
 
 import java.util.List;
