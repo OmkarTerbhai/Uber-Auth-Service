@@ -2,11 +2,10 @@ package com.uber.auth.controllers;
 
 import com.uber.auth.dto.DriverDTO;
 import com.uber.auth.dto.SignInDTO;
-import com.uber.auth.entities.Driver;
+import com.uber.common.entities.Driver;
 import com.uber.auth.services.AuthService;
 import com.uber.auth.services.JWTService;
 import jakarta.annotation.security.PermitAll;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;

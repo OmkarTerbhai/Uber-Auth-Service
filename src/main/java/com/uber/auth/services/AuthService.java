@@ -1,8 +1,8 @@
 package com.uber.auth.services;
 
 import com.uber.auth.dto.DriverDTO;
-import com.uber.auth.entities.Driver;
-import com.uber.auth.repositories.DriverRepository;
+import com.uber.common.entities.Driver;
+import com.uber.common.repositories.DriverRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

@@ -1,7 +1,7 @@
 package com.uber.auth.services;
 
-import com.uber.auth.entities.Driver;
-import com.uber.auth.repositories.DriverRepository;
+import com.uber.common.entities.Driver;
+import com.uber.common.repositories.DriverRepository;
 import com.uber.auth.security.AuthDriverDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

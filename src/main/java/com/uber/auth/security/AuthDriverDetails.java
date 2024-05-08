@@ -1,7 +1,6 @@
 package com.uber.auth.security;
 
-import com.uber.auth.AuthApplication;
-import com.uber.auth.entities.Driver;
+import com.uber.common.entities.Driver;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
