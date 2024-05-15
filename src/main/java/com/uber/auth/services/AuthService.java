@@ -24,10 +24,7 @@ public class AuthService {
     public Driver saveDriver(DriverDTO driverDTO) {
         log.info("Hello from controller...");
         Driver d = Driver.builder()
-                .age(driverDTO.getAge())
                 .name(driverDTO.getName())
-                .email(driverDTO.getEmail())
-                .password(this.bCryptPasswordEncoder.encode(driverDTO.getPassword()))
                 .build();
 
         this.driverRepository.save(d);
