@@ -1,10 +1,11 @@
 package com.uber.auth.controllers;
 
-import com.uber.auth.dto.DriverDTO;
+import com.uber.auth.dto.SignUpDTO;
 import com.uber.auth.dto.SignInDTO;
-import com.uber.common.entities.Driver;
 import com.uber.auth.services.AuthService;
 import com.uber.auth.services.JWTService;
+import com.uber.common.entities.Driver;
+import com.uber.common.entities.Rider;
 import jakarta.annotation.security.PermitAll;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -16,6 +17,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
 
 @RestController
 @RequestMapping("/api/v1")
@@ -38,10 +40,17 @@ public class AuthController {
         this.authenticationManager = authenticationManager;
         this.jwtService = jwtService;
     }
-    @PostMapping("/signup")
-    public ResponseEntity<?> signup(@RequestBody DriverDTO driverDTO) {
+    @PostMapping("/signup/driver")
+    public ResponseEntity<?> signupDriver(@RequestBody SignUpDTO signUpDTO) {
 
-        Driver d = this.authService.saveDriver(driverDTO);
+        Driver d = this.authService.saveDriver(signUpDTO);
+        return new ResponseEntity<>(d, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/signup/rider")
+    public ResponseEntity<?> signupRider(@RequestBody SignUpDTO signUpDTO) {
+
+        Rider d = this.authService.saveRiver(signUpDTO);
         return new ResponseEntity<>(d, HttpStatus.CREATED);
     }
 
