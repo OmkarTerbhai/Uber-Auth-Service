@@ -31,7 +31,7 @@ public class AuthService {
                 .builder()
                 .name(signUpDTO.getName())
                 .email(signUpDTO.getEmail())
-                .licenseNumber("MH122344")
+                .licenseNumber("MH12234455")
                 .password(this.bCryptPasswordEncoder.encode(signUpDTO.getPassword()))
                 .build();
 

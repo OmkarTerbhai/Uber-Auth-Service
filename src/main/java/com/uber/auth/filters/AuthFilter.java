@@ -26,7 +26,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 @Slf4j
-@WebFilter("/api/vi.signin")
+@WebFilter("/api/vi/signin")
 @Configuration
 public class AuthFilter extends OncePerRequestFilter {
 
@@ -37,7 +37,7 @@ public class AuthFilter extends OncePerRequestFilter {
     private DriverDetailsService userDetailsService;
 
     private final RequestMatcher uriMatcher =
-            new AntPathRequestMatcher("/api/v1/auth/validate", HttpMethod.GET.name());
+            new AntPathRequestMatcher("/api/vi/signin", HttpMethod.POST.name());
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         System.out.println("In filter");

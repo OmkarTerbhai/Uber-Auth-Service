@@ -18,9 +18,9 @@ import java.util.List;
 
 public class AuthDriverDetails extends Driver implements UserDetails {
 
+    Driver d;
     public AuthDriverDetails(Driver d) {
-        this.setEmail(d.getEmail());
-        this.setPassword(d.getPassword());
+        this.d = d;
     }
 
 
@@ -31,11 +31,11 @@ public class AuthDriverDetails extends Driver implements UserDetails {
 
     @Override
     public String getPassword() {
-        return this.getPassword();
+        return d.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return this.getEmail();
+        return d.getEmail();
     }
 }
